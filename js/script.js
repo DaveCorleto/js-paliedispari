@@ -29,53 +29,54 @@
 
 // Pari e Dispari
 
-// Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzione).
-// Sommiamo i due numeri Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione) Dichiariamo chi ha vinto.
 
-// L’utente sceglie pari o dispari e inserisce un numero da 1 a 5.
+document.getElementById("Gioca!").addEventListener("click", function() {
+    // Ottiengo il valore selezionato dall'utente nella tendina della scelta
+    let userChoice = document.getElementById("scelta-utente").value;
 
-let userChoice = prompt ("Inserisci la tua scelta: Pari o Dispari?");
-let userNumber = parseInt (prompt("Inserisci un numero da 1 a 5"));
+    // Ottieni il valore selezionato dall'utente nella tendina del numero
+    let userNumber = document.getElementById("scelta-numero").value;
 
-if ((userNumber < 1) || (userNumber>5)) {
-    alert ("per favore inserisci un numero tra 1 e 5");
-}
-    // Generiamo un numero da 1 a 5 
+    // Parte di codice usata con il Prompt 
 
-function numRandom() {
-    const number = Math.floor(Math.random() * 5) + 1;
-    console.log(number)
-    return number; // Restituisce il numero generato
-}
+    // // Verifica se il numero inserito è valido (tra 1 e 5)
+    // if (userNumber < 1 || userNumber > 5) {
+    //     alert("Per favore inserisci un numero tra 1 e 5");
+    //     return; // Esci dalla funzione se il numero non è valido
+    // }
 
-// Genero una variabile che mi permette di usare il numero random generato dalla funzione numRandom 
+    // Generiamo un numero casuale da 1 a 5
+    function numRandom() {
+        const number = Math.floor(Math.random() * 5) + 1;
+        console.log(number);
+        return number; // Restituisce il numero generato
+    }
 
-let numGenerated = numRandom();
+    // Generiamo una variabile che ci permette di usare il numero random generato dalla funzione numRandom
+    let numGenerated = numRandom();
+    console.log(numGenerated);
 
-console.log(numGenerated);
+    // Sommiamo i due numeri e stabiliamo se la somma è pari o dispari
+    let somma = parseInt(numGenerated) + parseInt(userNumber);
+    console.log(somma);
 
-// Sommiamo i due numeri Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione) 
+    let risultato;
 
-let somma = numGenerated + userNumber;
+    if (somma % 2 === 0) {
+        risultato = "pari";
+    } else {
+        risultato = "dispari";
+    }
 
-console.log (somma);
+    console.log(risultato);
 
-// Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione) 
-
-let risultato; 
-
-if (somma % 2 === 0) {
-    risultato = "Pari"
-}
-else {
-    risultato = "Dispari"
-}
-
-console.log(risultato)
-
-// Dichiariamo chi ha vinto. 
-
-
+    // Dichiariamo chi ha vinto
+    if (userChoice === risultato) {
+        alert("Congratulazioni hai vinto!");
+    } else {
+        alert("Mi dispiace, ha vinto il pc!");
+    }
+});
 
 
 
